@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Detection</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    .container {
+      margin-top: 20px;
+    }
+    img {
+      border: 3px solid #333;
+      width: 640px;
+      height: 480px;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .emotion {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Real-Time Emotion Detection</h1>
+  <div class="container">
+    <img src="{{ url_for('video_feed') }}" alt="Video Feed">
+    <div class="emotion">
+      {% if emotion %}
+        Detected Emotion: {{ emotion }}
+      {% else %}
+        Detecting emotion...
+      {% endif %}
+    </div>
+    <br>
+    <button class="btn" onclick="window.location.href='/stop'">Stop Detection</button>
+    <button class="btn" onclick="window.location.href='/start'">Detect Again</button>
+  </div>
+</body>
+</html>
+
